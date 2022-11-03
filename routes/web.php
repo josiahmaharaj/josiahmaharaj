@@ -21,6 +21,10 @@ Route::get('/blog', function () {
     return view('blog');
 });
 
+Route::get('/post', function () {
+    return view('post');
+});
+
 // Route::get('/uses', function () {
 //     return view('uses');
 // });
