@@ -8,20 +8,28 @@
                         class="mb-5 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green sm:mb-8">category</span>
                     <h2
                         class="block font-body text-3xl font-semibold leading-tight text-primary dark:text-white sm:text-4xl md:text-5xl">
-                        Using Git Submodules for Private Content
+                        {{ $post->title }}
                     </h2>
                     <div class="flex items-center pt-5 sm:pt-8">
                         <p class="pr-2 font-body font-light text-primary dark:text-white">
-                            July 19, 2020
+                            {{ $post->updated_at }}
                         </p>
-                        <span class="vdark:text-white font-body text-grey">//</span>
-                        <p class="pl-2 font-body font-light text-primary dark:text-white">
-                            4 min read
-                        </p>
+                        @if ($post->minutes != null)
+                            <span class="vdark:text-white font-body text-grey">//</span>
+                            <p class="pl-2 font-body font-light text-primary dark:text-white">
+                                4 min read
+                            </p>
+                        @endif
+                    </div>
+                    <div class="flex pt-5 sm:pt-8">
+                        <a href="{{ route('post.edit', $post->id) }}"><button
+                                class="text-white bg-secondary py-2 px-4 rounded">Edit</button></a>
                     </div>
                 </div>
                 <div class="prose prose max-w-none border-b border-grey-lighter py-8 dark:prose-dark sm:py-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+
+                    {!! $post->body !!}
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Augue ut lectus arcu bibendum at varius vel pharetra vel. Turpis
                         nunc eget lorem dolor sed viverra ipsum nunc aliquet. Massa placerat duis ultricies lacus sed
                         turpis tincidunt. Cursus sit amet dictum sit amet justo donec enim. Nec dui nunc mattis enim ut
@@ -128,11 +136,11 @@
                     </div>
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                        labore et dolore magna aliqua.</p> --}}
 
                 </div>
 
-                <div class="flex items-center py-10">
+                {{-- <div class="flex items-center py-10">
                     <span class="pr-5 font-body font-medium text-primary dark:text-white">Share</span>
                     <a href="/">
                         <i
@@ -147,7 +155,7 @@
                     <a href="/">
                         <i
                             class="bx bxl-reddit pl-2 text-2xl text-primary transition-colors hover:text-secondary dark:text-white dark:hover:text-secondary"></i></a>
-                </div>
+                </div> --}}
             </div>
         </div>
 

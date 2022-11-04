@@ -2,7 +2,7 @@
 
     <div>
         <div class="container mx-auto">
-            <div class="border-b border-grey-lighter py-16 lg:py-20">
+            <div class="border-grey-lighter py-16 lg:py-20">
                 <div>
                     <img src="/assets/img/avatar.png" class="h-16 w-16 rounded-full" alt="author" />
                 </div>
@@ -45,71 +45,29 @@
                 </div> --}}
 
             <div class="py-16 lg:py-20">
-                <div class="flex items-center pb-6">
-                    {{-- <img src="/assets/img/icon-story.png" alt="icon story" />
-                        <h3 class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">
-                            My Story
-                        </h3> --}}
-                    <a href="/blog"
-                        class="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary">
-                        All posts
-                        <img src="/assets/img/long-arrow-right.png" class="ml-3" alt="arrow right" />
-                    </a>
-                </div>
-                <div class="pt-8">
-                    <div class="border-b border-grey-lighter pb-8">
+
+                @forelse ($posts as $post)
+                    <div class="border-b border-grey-lighter pb-8 mb-8">
                         <span
-                            class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">category</span>
-                        <a href="/post"
-                            class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Quis
-                            hendrerit dolor magna eget est lorem ipsum dolor sit</a>
+                            class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">{{ $post->category }}</span>
+                        <a href="{{ route('post.show', $post->id) }}"
+                            class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">{{ $post->title }}</a>
                         <div class="flex items-center pt-4">
                             <p class="pr-2 font-body font-light text-primary dark:text-white">
-                                July 19, 2020
+                                {{ $post->updated_at }}
                             </p>
-                            <span class="font-body text-grey dark:text-white">//</span>
-                            <p class="pl-2 font-body font-light text-primary dark:text-white">
-                                4 min read
-                            </p>
+                            @if ($post->minutes != null)
+                                <span class="font-body text-grey dark:text-white">//</span>
+                                <p class="pl-2 font-body font-light text-primary dark:text-white">
+                                    4 min read
+                                </p>
+                            @endif
+
                         </div>
                     </div>
-                    <div class="border-b border-grey-lighter pt-10 pb-8">
-                        <div class="flex items-center">
-                            <span
-                                class="mb-4 inline-block rounded-full bg-grey-light px-2 py-1 font-body text-sm text-blue-dark">category</span>
-                            <span
-                                class="mb-4 ml-4 inline-block rounded-full bg-yellow-light px-2 py-1 font-body text-sm text-yellow-dark">category</span>
-                        </div>
-                        <a href="/post"
-                            class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Senectus
-                            et netus et malesuada fames ac turpis egestas integer</a>
-                        <div class="flex items-center pt-4">
-                            <p class="pr-2 font-body font-light text-primary dark:text-white">
-                                June 30, 2020
-                            </p>
-                            <span class="font-body text-grey dark:text-white">//</span>
-                            <p class="pl-2 font-body font-light text-primary dark:text-white">
-                                5 min read
-                            </p>
-                        </div>
-                    </div>
-                    <div class="border-b border-grey-lighter pt-10 pb-8">
-                        <span
-                            class="mb-4 inline-block rounded-full bg-blue-light px-2 py-1 font-body text-sm text-blue">category</span>
-                        <a href="/post"
-                            class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Vulputate
-                            ut pharetra sit amet aliquam id diam maecenas ultricies</a>
-                        <div class="flex items-center pt-4">
-                            <p class="pr-2 font-body font-light text-primary dark:text-white">
-                                June 26, 2020
-                            </p>
-                            <span class="font-body text-grey dark:text-white">//</span>
-                            <p class="pl-2 font-body font-light text-primary dark:text-white">
-                                3 min read
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    <h3 class="text-white">No Posts as yet</h3>
+                @endforelse
             </div>
 
             {{-- Projects --}}

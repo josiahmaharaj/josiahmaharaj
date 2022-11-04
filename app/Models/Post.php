@@ -10,5 +10,6 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'body', 'categories'];
+    protected $fillable = ['title', 'body', 'categories', 'visible'];
+    protected $attributes = ['visible' => false];
 }

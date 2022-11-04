@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewPostRequest;
+use App\Http\Requests\EditPostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('blog', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->paginate(15)]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -33,9 +36,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewPostRequest $request)
     {
-        //
+        $data = $request->validated();
+        if (!$request->has('visible')) {
+            $data['visible'] = 0;
+        }
+        Post::create($data);
+        return redirect('dashboard');
     }
 
     /**
@@ -46,7 +54,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -57,7 +65,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -67,9 +75,14 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(EditPostRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+        if (!$request->has('visible')) {
+            $data['visible'] = 0;
+        }
+        $post->update($data);
+        return redirect('dashboard');
     }
 
     /**
@@ -80,6 +93,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->back();
     }
 }

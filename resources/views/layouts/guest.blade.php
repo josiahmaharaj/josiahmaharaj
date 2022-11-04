@@ -84,11 +84,13 @@
                         :class="isDarkMode ? 'bxs-sun' : 'bxs-moon'"></i> --}}
 
                     <svg width="24" height="15" xmlns="http://www.w3.org/2000/svg"
-                        @click="isMobileMenuOpen = true" class="fill-current text-primary dark:text-white text-white">
+                        @click="isMobileMenuOpen = true" class="fill-current text-primary text-white">
                         <g fill-rule="evenodd">
-                            <rect width="24" height="3" rx="1.5" />
-                            <rect x="8" y="6" width="16" height="3" rx="1.5" />
-                            <rect x="4" y="12" width="20" height="3" rx="1.5" />
+                            <rect width="24" height="3" rx="1.5" style="fill:rgb(255,255,255);" />
+                            <rect x="8" y="6" width="16" height="3" rx="1.5"
+                                style="fill:rgb(255,255,255);" />
+                            <rect x="4" y="12" width="20" height="3" rx="1.5"
+                                style="fill:rgb(255,255,255);" />
                         </g>
                     </svg>
                 </div>
@@ -110,6 +112,16 @@
                             <a href="/blog"
                                 class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">Blog</a>
                         </li>
+
+                        @if (auth()->check())
+                            <li class="group relative mr-6 mb-1">
+                                <div
+                                    class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow">
+                                </div>
+                                <a href="/dashboard"
+                                    class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">DASHBOARD</a>
+                            </li>
+                        @endif
 
                         {{-- <li class="group relative mr-6 mb-1">
                             <div
@@ -168,8 +180,7 @@
     </div>
 
     <div class="container mx-auto">
-        <div
-            class="flex flex-col items-center justify-between border-t border-grey-lighter py-10 sm:flex-row sm:py-12">
+        <div class="flex flex-col items-center justify-between border-grey-lighter py-10 sm:flex-row sm:py-12">
             <div class="mr-auto flex flex-col items-center sm:flex-row">
                 <a href="/" class="mr-auto sm:mr-6 flex-none w-10">
                     <img src="/assets/img/logo.png" alt="logo" />

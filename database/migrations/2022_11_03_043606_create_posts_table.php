@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->string('category');
-            $table->integer('minutes');
-            $table->boolean('published');
+            $table->string('category')->nullable();
+            $table->integer('minutes')->nullable();
+            $table->boolean('visible');
             $table->timestamps();
             $table->softDeletes();
         });
