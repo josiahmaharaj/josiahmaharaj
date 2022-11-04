@@ -14,10 +14,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="{{ route('post.store') }}">
                         @csrf
-                        <div class=" relative py-2">
+                        <div class="flex flex-row space-x-4 relative py-2">
                             <input type="text" id="simple-email" name="title" value="{{ old('title') }}"
                                 class=" flex-1 rounded appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:border-transparent"
                                 placeholder="Title" />
+                            <input type="text" id="mintes" name="minutes" value="{{ old('minutes') }}"
+                                class=" flex-none rounded appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:border-transparent"
+                                placeholder="Minutes" />
                         </div>
                         <x-forms.tinymce-editor body="{!! old('body') !!}" />
                         <div class="mt-5">

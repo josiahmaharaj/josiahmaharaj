@@ -27,7 +27,7 @@ class NewPostRequest extends FormRequest
             'title' => 'required|string',
             'body' => 'required|string',
             'category' => 'string',
-            'minutes' => 'integer',
+            'minutes' => 'nullable|integer',
             'visible' => 'boolean',
         ];
     }

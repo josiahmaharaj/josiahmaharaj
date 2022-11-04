@@ -12,12 +12,12 @@
                     </h2>
                     <div class="flex items-center pt-5 sm:pt-8">
                         <p class="pr-2 font-body font-light text-primary dark:text-white">
-                            {{ $post->updated_at }}
+                            {{ \Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}
                         </p>
                         @if ($post->minutes != null)
                             <span class="vdark:text-white font-body text-grey">//</span>
                             <p class="pl-2 font-body font-light text-primary dark:text-white">
-                                4 min read
+                                {{ $post->minutes }} min read
                             </p>
                         @endif
                     </div>

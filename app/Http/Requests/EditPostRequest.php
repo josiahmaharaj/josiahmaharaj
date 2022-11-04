@@ -27,7 +27,7 @@ class EditPostRequest extends FormRequest
             'title' => 'filled|string',
             'body' => 'filled|string',
             'category' => 'string',
-            'minutes' => 'integer',
+            'minutes' => 'nullable|integer',
             'visible' => 'boolean',
         ];
     }

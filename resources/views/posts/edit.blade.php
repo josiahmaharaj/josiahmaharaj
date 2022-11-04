@@ -15,10 +15,13 @@
                     <form method="POST" action="{{ route('post.update', $post->id) }}">
                         @method('patch')
                         @csrf
-                        <div class=" relative py-2">
+                        <div class="flex flex-row space-x-4 relative py-2">
                             <input type="text" id="simple-email" name="title" value="{{ $post->title }}"
-                                class=" flex-1 appearance-none border border-gray-700 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                                class=" flex-1 rounded appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:border-transparent"
                                 placeholder="Title" />
+                            <input type="text" id="mintes" name="minutes" value="{{ $post->minutes }}"
+                                class=" flex-none rounded appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:border-transparent"
+                                placeholder="Minutes" />
                         </div>
                         <x-forms.tinymce-editor :body="$post->body" />
                         {{-- <input type="checkbox" value="true" name="visible" @checked($post->visible) checked />

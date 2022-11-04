@@ -54,6 +54,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        if ($post->visible == false) {
+            abort(404, 'Not Found');
+        }
         return view('posts.show', ['post' => $post]);
     }
 

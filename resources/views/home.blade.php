@@ -46,6 +46,11 @@
 
             <div class="py-16 lg:py-20">
 
+                <a href="/blog"
+                    class="flex items-center pb-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary">
+                    All posts ({{ $number_posts ?? 0 }})
+                    <img src="/assets/img/long-arrow-right.png" class="ml-3" alt="arrow right" />
+                </a>
                 @forelse ($posts as $post)
                     <div class="border-b border-grey-lighter pb-8 mb-8">
                         <span
@@ -54,12 +59,12 @@
                             class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">{{ $post->title }}</a>
                         <div class="flex items-center pt-4">
                             <p class="pr-2 font-body font-light text-primary dark:text-white">
-                                {{ \Carbon\Carbon::parse($post->updated_at)->toFormattedDateString() }}
+                                {{ \Carbon\Carbon::parse($post->created_at)->toFormattedDateString() }}
                             </p>
                             @if ($post->minutes != null)
                                 <span class="font-body text-grey dark:text-white">//</span>
                                 <p class="pl-2 font-body font-light text-primary dark:text-white">
-                                    4 min read
+                                    {{ $post->minutes }} min read
                                 </p>
                             @endif
 
