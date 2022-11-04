@@ -4,8 +4,8 @@
         <div class="container mx-auto">
             <div class="pt-16 lg:pt-20">
                 <div class="border-b border-grey-lighter pb-8 sm:pb-12">
-                    <span
-                        class="mb-5 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green sm:mb-8">category</span>
+                    {{-- <span
+                        class="mb-5 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green sm:mb-8">category</span> --}}
                     <h2
                         class="block font-body text-3xl font-semibold leading-tight text-primary dark:text-white sm:text-4xl md:text-5xl">
                         {{ $post->title }}
