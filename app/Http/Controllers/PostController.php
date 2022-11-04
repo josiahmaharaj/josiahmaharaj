@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('blog', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->paginate(15)]);
+        return view('blog', ['posts' => Post::where('visible', true)->orderBy('created_at', 'DESC')->paginate(15)]);
     }
 
 

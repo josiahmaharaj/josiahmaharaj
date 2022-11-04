@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $number_posts = Post::where('visible', true)->count();
-        return view('home', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->take(3)->get(), 'number_posts' => $number_posts]);
+        return view('home', ['posts' => Post::where('visible', true)->orderBy('created_at', 'DESC')->take(3)->get(), 'number_posts' => $number_posts]);
     }
 
     public function dashboard()
