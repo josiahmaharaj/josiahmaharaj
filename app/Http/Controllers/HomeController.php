@@ -16,12 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        try {
-            DB::getPdo();
-        } catch (\Exception $e) {
-            die("Could not connect to the database.  Please check your configuration. error:" . $e);
-        }
-        //     return view('home', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->take(3)->get()]);
+        return view('home', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->take(3)->get()]);
     }
 
     public function dashboard()
