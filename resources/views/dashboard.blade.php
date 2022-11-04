@@ -29,6 +29,8 @@
                                 class="bg-white mx-auto flex flex-row justify-between overflow-hidden shadow-md sm:rounded-lg my-2 p-5">
                                 <div class="flex items-center">
                                     <p class="font-bold">{{ $post->title }}</p>
+                                    <p class="ml-5">
+                                        {{ \Carbon\Carbon::parse($post->updated_at)->toDayDateTimeString() }}</p>
                                     @if ($post->visible)
                                         <div class="ml-5 bg-sky-200 rounded-full">
                                             <p class="text-blue py-1 px-2">visible</p>

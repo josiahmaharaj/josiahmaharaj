@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->take(3)->get()]);
+        try {
+            DB::getPdo();
+        } catch (\Exception $e) {
+            die("Could not connect to the database.  Please check your configuration. error:" . $e);
+        }
+        //     return view('home', ['posts' => Post::where('visible', true)->orderBy('updated_at', 'DESC')->take(3)->get()]);
     }
 
     public function dashboard()

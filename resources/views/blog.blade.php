@@ -36,7 +36,7 @@
                                 class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">{{ $post->title }}</a>
                             <div class="flex items-center pt-4">
                                 <p class="pr-2 font-body font-light text-primary dark:text-white">
-                                    {{ $post->updated_at }}
+                                    {{ \Carbon\Carbon::parse($post->updated_at)->toFormattedDateString() }}
                                 </p>
                                 @if ($post->minutes != null)
                                     <span class="font-body text-grey dark:text-white">//</span>
